@@ -1,0 +1,33 @@
+﻿@model Post
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = $"{Model.Tags?.Replace(",","")}{Model.Category}";
+}
+
+@*<h2>Post</h2>
+
+<h2>@Model.Title</h2>
+
+@if (!String.IsNullOrEmpty(Model.Image))
+{
+    var imagePath = $"/Image/{Model.Image}";
+    <img src="@imagePath" asp-append-version="IsLayoutBeingRendered" width="500"/>
+}
+
+<h2>@Model.Body</h2>*@
+
+<div class="container-post">
+    <div class="post no-shadow">
+        @if (!String.IsNullOrEmpty(Model.Image))
+        {
+            var imagePath = $"/Image/{Model.Image}";
+            <img src="@imagePath" asp-append-version="IsLayoutBeingRendered"/>
+            <span class="title">@Model.Title</span>
+        }
+    </div>
+    <div class="post-body">
+        @Html.Raw(Model.Body)
+       
+    </div>
+</div>
